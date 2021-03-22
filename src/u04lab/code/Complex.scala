@@ -1,5 +1,7 @@
 package u04lab.code
 
+import Exercise.Exercise1.ComplexImpl
+
 trait Complex {
   def re: Double
   def im: Double
@@ -8,7 +10,7 @@ trait Complex {
 }
 
 object Complex {
-  def apply(re:Double, im:Double):Complex = ??? // Fill here
+  def apply(re:Double, im:Double):Complex = ComplexImpl(re, im)
 }
 
 object TryComplex extends App {
