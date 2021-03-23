@@ -2,11 +2,12 @@ package u04lab.code
 
 import Lists._
 import u04lab.code.Lists.List.Cons // import custom List type (not the one in Scala stdlib)
+import Exercise.Exercise2._
 
 trait Student {
   def name: String
   def year: Int
-  def enrolling(course: Course): Unit // the student participates to a Course
+  def enrolling(course: Course*): Unit // the student participates to a Course
   def courses: List[String] // names of course the student participates to
   def hasTeacher(teacher: String): Boolean // is the student participating to a course of this teacher?
 }
@@ -17,11 +18,11 @@ trait Course {
 }
 
 object Student {
-  def apply(name: String, year: Int = 2017): Student = ???
+  def apply(name: String, year: Int = 2017): Student = StudentImpl(name, year)
 }
 
 object Course {
-  def apply(name: String, teacher: String): Course = ???
+  def apply(name: String, teacher: String): Course = CourseImpl(name, teacher)
 }
 
 object Try extends App {
