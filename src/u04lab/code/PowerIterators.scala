@@ -35,7 +35,7 @@ class PowerIteratorsFactoryImpl extends PowerIteratorsFactory {
       private var pastList: List[X] = Nil[X]()
 
       override def next(): Option[X] = actualStream match {
-        case Stream.Cons(h,t) => actualStream=t.apply(); pastList=List.append(pastList,Cons(h.apply(), Nil())); Option.Some(h.apply())
+        case Stream.Cons(h,t) => actualStream=t(); pastList=List.append(pastList,Cons(h(), Nil())); Option.Some(h())
         case _ => Option.empty
       }
 
