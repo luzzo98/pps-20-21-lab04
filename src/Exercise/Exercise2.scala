@@ -26,6 +26,7 @@ object Exercise2 {
   }
 
 
+
   //implementation of the function "contains()" used in "hasTeacher()"
 
 //  @tailrec

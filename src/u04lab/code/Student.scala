@@ -1,7 +1,6 @@
 package u04lab.code
 
 import Lists._
-import u04lab.code.Lists.List.Cons // import custom List type (not the one in Scala stdlib)
 import Exercise.Exercise2._
 
 trait Student {
