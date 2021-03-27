@@ -22,16 +22,24 @@ object OptionalExercise {
 
   object sameTeacher {
     def unapply(courses: List[Course]): Option[String] = courses match {
-      case Cons(CourseImpl(_, teacher), tail) => sameElement(tail)(teacher)
+      case Cons(CourseImpl(_, teacher), _) => sameElement(courses)(teacher)
       case Nil() => Option.empty
     }
   }
 
   @tailrec
   def sameElement(l: List[Course])(elem: String): Option[String] = l match {
-    case Cons(CourseImpl(_, teacher), t) => if (t != Nil()) {
-      if (teacher==elem) sameElement(t)(elem) else Option.empty
-    } else Option(teacher)
+    case Cons(CourseImpl(_, teacher), t) if t != Nil() => if (teacher==elem) sameElement(t)(elem) else Option.empty
+    case Cons(CourseImpl(_, teacher), t) if t == Nil() => Option(teacher)
     case Nil() => Option.empty
   }
+
+//  @tailrec
+//  def sameElement(l: List[Course])(elem: String): Option[String] = l match {
+//    case Cons(CourseImpl(_, teacher), t) =>
+//      if (t != Nil())
+//        if (teacher==elem) sameElement(t)(elem) else Option.empty
+//      else Option(teacher)
+//    case Nil() => Option.empty
+//  }
 }

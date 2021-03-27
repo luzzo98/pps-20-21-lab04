@@ -26,16 +26,24 @@ class TestOptionalExercise {
   @Test def testWithSameTeacher(): Unit = {
     val courses = factoryList(Course("Fisica", "Mario"), Course("Analisi", "Mario"), Course("PPS", "Mario"))
     courses match {
-      case sameTeacher(t) => println(s"$courses have same teacher $t")
-      case _ => println(s"$courses have different teacher")
+      case sameTeacher(t) => assertEquals("Mario", t)
+      case _ => throw new Exception("Non dovrebbe essere qui")
     }
   }
 
   @Test def testWithNotSameTeacher(): Unit = {
     val courses = factoryList(Course("Fisica", "Mario"), Course("Analisi", "Giovanni"), Course("PPS", "Mario"))
     courses match {
-      case sameTeacher(t) => println(s"$courses have same teacher $t")
-      case _ => println(s"$courses have different teacher")
+      case sameTeacher(t) => throw new Exception("Non dovrebbe essere qui")
+      case _ => println("Nessun insegnante in comune: OK")
+    }
+  }
+
+  @Test def testSameTeacherWithOnlyOneCourse(): Unit = {
+    val courses = factoryList(Course("Fisica", "Mario"))
+    courses match {
+      case sameTeacher(t) => assertEquals("Mario", t)
+      case _ => throw new Exception("Non dovrebbe essere qui")
     }
   }
 }
