@@ -35,7 +35,7 @@ class TestOptionalExercise {
     val courses = factoryList(Course("Fisica", "Mario"), Course("Analisi", "Giovanni"), Course("PPS", "Mario"))
     courses match {
       case sameTeacher(t) => throw new Exception("Non dovrebbe essere qui")
-      case _ => println("Nessun insegnante in comune: OK")
+      case _ => println("Nessun insegnante in comune a tutti i corsi: OK")
     }
   }
 
