@@ -34,7 +34,7 @@ class TestOptionalExercise {
   @Test def testWithNotSameTeacher(): Unit = {
     val courses = factoryList(Course("Fisica", "Mario"), Course("Analisi", "Giovanni"), Course("PPS", "Mario"))
     courses match {
-      case sameTeacher(t) => throw new Exception("Non dovrebbe essere qui")
+      case sameTeacher(_) => throw new Exception("Non dovrebbe essere qui")
       case _ => println("Nessun insegnante in comune a tutti i corsi: OK")
     }
   }

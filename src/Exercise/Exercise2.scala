@@ -17,14 +17,13 @@ object Exercise2 {
 
     override def enrolling(courses: Course*): Unit = {
       for (course <- courses)
-        list = List.append(Cons(course, Nil()), list)
+        list = Cons(course, list)
     }
 
     override def courses: List[String] = map(list) { case CourseImpl(name,_) => name }
 
     override def hasTeacher(teacher: String): Boolean = contains(map(list){ case CourseImpl(_, t) => t })(teacher)
   }
-
 
 
   //implementation of the function "contains()" used in "hasTeacher()"

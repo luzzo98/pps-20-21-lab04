@@ -9,11 +9,18 @@ import scala.annotation.tailrec
 
 object OptionalExercise {
 
+//  def factoryList[A](args: A*): List[A] = {
+//    var list: List[A] = Nil()
+//    for (elem <- args)
+//      list = List.append(list, Cons(elem, Nil()))
+//    list
+//  }
+
   def factoryList[A](args: A*): List[A] = {
     var list: List[A] = Nil()
     for (elem <- args)
-      list = List.append(list, Cons(elem, Nil()))
-    list
+      list = Cons(elem, list)
+    reverse(list)
   }
 
   trait sameTeacher {
